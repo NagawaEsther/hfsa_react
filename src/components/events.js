@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './events.css';
 
 const EventList = () => {
-  const [events, setEvents] = useState(null); // Start with null while fetching
+  const [events, setEvents] = useState(null); 
 
   useEffect(() => {
     const fetchEvents = async () => {

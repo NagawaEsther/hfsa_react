@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'; 
 
 
-import './program.css';
 
 
-
-const ProgramList = () => {
+const ProgramAll= () => {
   const [programs, setPrograms] = useState(null); 
   useEffect(() => {
     const fetchPrograms = async () => {
@@ -62,12 +60,10 @@ const ProgramList = () => {
         </div>
       </section>
       
-      <footer>
-        <p>&copy; 2024 Hope Field Sports Academy. All rights reserved.</p>
-      </footer>
+      
     </div>
     
   );
 };
 
-export default ProgramList;
+export default ProgramAll;

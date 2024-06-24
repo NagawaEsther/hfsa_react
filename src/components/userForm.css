@@ -1,0 +1,70 @@
+/* userform.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: blue;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .registration-container {
+    display: flex;
+  }
+  
+  .image-container {
+    flex: 4;
+    background-image: url('../workimage.jpg'); 
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .form-container {
+    flex: 1;
+    padding: 100px; 
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; 
+    margin: 0 auto; 
+  }
+  
+  form {
+    padding: 20px; 
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    width: calc(100% - 20px); 
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  form button {
+    width: 100%; 
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  

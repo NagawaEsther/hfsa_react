@@ -1,0 +1,94 @@
+/* contact_inquiry.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: blue;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  
+  
+  .contact-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .contact-content {
+    flex: 3;
+    padding: 20px;
+    margin-right: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-content h2 {
+    color: #333;
+  }
+  
+  .contact-content p {
+    margin: 10px 0;
+  }
+  
+  .sidebar {
+    flex: 2;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar form div {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+  }
+  
+  .sidebar form input,
+  .sidebar form textarea,
+  .sidebar form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .sidebar form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sidebar form button:hover {
+    background-color: #0056b3;
+  }
+  
+  footer {
+    background-color: #b0d6f0;
+    color: #fff;
+    padding: 20px;
+    text-align:center;
+  }

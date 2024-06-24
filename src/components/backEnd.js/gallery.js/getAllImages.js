@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './gallery.css';
 
-const GalleryList = () => {
+
+const GetALLImages = () => {
   const [galleryItems, setGalleryItems] = useState([]);
 
   useEffect(() => {
-    fetchGalleryItems();
+    fetchGetAllImages();
   }, []);
 
-  const fetchGalleryItems = async () => {
+  const fetchGetAllImages = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:5000/api/v1/gallery/images');
       console.log('Response from API:', response.data); 
@@ -41,11 +41,9 @@ const GalleryList = () => {
           ))}
         </div>
       </div>
-      <footer>
-        <p>&copy; 2024 Hope Field Sports Academy. All rights reserved.</p>
-      </footer>
+      
     </div>
   );
 };
 
-export default GalleryList;
+export default GetALLImages;

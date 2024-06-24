@@ -1,10 +1,7 @@
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
-import './donations.css'; 
 
-const DonationList = () => {
+const DonationCreate = () => {
   const [formData, setFormData] = useState({
     donor_name: '',
     donor_email: '',
@@ -44,23 +41,7 @@ const DonationList = () => {
         <h1>Hope Field Sports Academy</h1>
       </header>
 
-      <div className="donation-container">
-        <div className="donation-content">
-          <h2>Bank Account Details</h2>
-          <div className="details-content">
-            <h3>Account Name:</h3>
-            <p>Hope Field Sports Academy</p>
-            <h3>Account Number:</h3>
-            <p>123456789</p>
-            <h3>Bank:</h3>
-            <p>ABC Bank</p>
-            <h3>Branch:</h3>
-            <p>Downtown</p>
-            <h3>SWIFT Code:</h3>
-            <p>ABCD1234</p>
-          </div>
-        </div>
-
+      
         <div className="sidebar">
           <h2>Donor Details</h2>
           <form onSubmit={handleDonationSubmit}>
@@ -113,11 +94,9 @@ const DonationList = () => {
         </div>
       </div>
 
-      <footer>
-        <p>&copy; 2024 Hope Field Sports Academy. All rights reserved.</p>
-      </footer>
-    </div>
+      
+  
   );
 };
 
-export default DonationList;
+export default DonationCreate;

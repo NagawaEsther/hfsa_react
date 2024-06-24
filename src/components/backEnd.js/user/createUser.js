@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import workimage from '../workimage.jpg';
-import './userForm.css';
 
-const UserForm = () => {
+
+const UserRegister = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
-        role: '',
+        role: '', 
         date_of_birth: '',
         contact_number: '',
         address: '',
@@ -27,7 +26,7 @@ const UserForm = () => {
             const response = await axios.post('http://127.0.0.1:5000/api/v1/user/register', formData);
             console.log('Registration successful:', response.data);
             alert('Registration successful!');
-           
+            
             setFormData({
                 name: '',
                 email: '',
@@ -45,9 +44,7 @@ const UserForm = () => {
 
     return (
         <div className="registration-container">
-            <div className="image-container">
-                <img src={workimage} alt="Work" />
-            </div>
+           
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
                     <h1 style={{ color: 'blue' }}>Registration Form</h1>
@@ -84,7 +81,7 @@ const UserForm = () => {
                             required
                         />
                     </div>
-                   
+
                     <div>
                         <label htmlFor="date_of_birth">Date of Birth:</label>
                         <input
@@ -120,16 +117,11 @@ const UserForm = () => {
 
                     <button type="submit">Register</button>
 
-                    <p>
-                        By continuing, you agree to Hope Field Sports Academy's Terms of Use and Privacy Policy.
-                    </p>
-                    <p>
-                        Already have an account? <a href="/login">Log in</a>
-                    </p>
+                    
                 </form>
             </div>
         </div>
     );
 };
 
-export default UserForm;
+export default UserRegister;

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './contact_inquiry.css';
+
 
 const ContactInquiryList = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +21,7 @@ const ContactInquiryList = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log('Submitting inquiry:', formData); // Log formData being sent
+      console.log('Submitting inquiry:', formData); 
       const response = await axios.post('http://127.0.0.1:5000/api/v1/contact-inquiry/create', formData);
       console.log('Inquiry submitted:', response.data);
       alert('Inquiry submitted successfully!');

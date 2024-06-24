@@ -1,0 +1,31 @@
+about_us.css
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: black;
+    font-size: larger;
+  }
+  
+  
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: black;
+    font-size: larger;
+  }
+  
+  ul{
+    font-size: larger;
+  }
+  
+  
+   footer {
+    background-color: #b0d6f0;
+    color: #fff;
+    padding: 20px;
+    text-align:center;
+  }
