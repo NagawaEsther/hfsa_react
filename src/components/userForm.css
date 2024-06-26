@@ -6,12 +6,12 @@ body {
     background-color: #f4f4f4;
   }
   
-  header {
-    background-color: blue;
+    header {
+    background-color: rgb(130, 168, 219);
     color: #fff;
     padding: 10px 0;
     text-align: center;
-  }
+  }  
   
   .registration-container {
     display: flex;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import TokenLogin from '../tokenLogin'; 
 
 const UpdateDonorById = () => {
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
   const [donorId, setDonorId] = useState('');
   const [formData, setFormData] = useState({
     donor_name: '',
@@ -18,6 +18,7 @@ const UpdateDonorById = () => {
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
   
@@ -83,6 +84,12 @@ const UpdateDonorById = () => {
       
     }
   }, [token]);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
 
   return (
     <div className="donor-update-container">
@@ -157,6 +164,7 @@ const UpdateDonorById = () => {
                 {loading ? 'Updating...' : 'Update Donor'}
               </button>
             </form>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         )}
       </section>

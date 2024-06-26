@@ -7,14 +7,14 @@ body {
     background-color: #f4f4f4;
   }
   
-  header {
+  /* header {
     background-color: blue;
     color: #fff;
     padding: 20px 0;
     text-align: center;
     font-size: larger;
     font-weight: bold;
-  }
+  } */
   
   #events-news {
     padding: 20px;

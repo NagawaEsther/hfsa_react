@@ -4,7 +4,8 @@
 
 
 .App-header {
-  background-color: #929090;
+  background-color: #b0d6f0;
+  /* #929090 */
   max-height: 135px;
   padding: 10px 20px;
   display: flex;
@@ -29,16 +30,19 @@ nav {
 }
 
 .App-link {
-  color: white;
+  color: black;
+  /* white */
   text-decoration: none;
   margin: 0 20px; 
   font-size: 20px; 
   flex: 1;
+  font-weight: bold;
 }
 
 .App-link:hover {
-  color: black; 
+  color: white; 
 }
+/* black */
 
 .App-header nav {
   display: flex;
@@ -68,7 +72,8 @@ nav {
   display: inline-block;
   padding: 10px 20px;
   background-color: #333;
-  color: #fff;
+  color:black;
+  /* #fff */
   text-decoration: none;
   border: none;
   cursor: pointer;

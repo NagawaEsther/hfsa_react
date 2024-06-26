@@ -3,7 +3,7 @@ import axios from 'axios';
 import TokenLogin from '../tokenLogin'; 
 
 const EventUpdate = () => {
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
   const [eventId, setEventId] = useState('');
   const [event, setEvent] = useState({
     name: '',
@@ -21,6 +21,7 @@ const EventUpdate = () => {
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token); 
   };
 
   
@@ -94,14 +95,24 @@ const EventUpdate = () => {
     }
   }, [token]);
 
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="event-update-container">
       <header>
         <h1>Event Management</h1>
+       
       </header>
 
       <section id="event-details">
+      
         <h2>Update Event by ID</h2>
+       
         {!token && <TokenLogin onTokenReceived={handleTokenReceived} />}
 
         {token && (
@@ -199,10 +210,12 @@ const EventUpdate = () => {
                 {loading ? 'Updating...' : 'Update Event'}
               </button>
             </form>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         )}
+         
       </section>
-
+      
       <footer>
         <p>&copy; 2024 Event Management. All rights reserved.</p>
       </footer>

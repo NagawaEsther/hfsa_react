@@ -1,5 +1,5 @@
 /*home.css */
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -7,12 +7,12 @@ body {
     color: #333;
   }
   
-  header {
-    background-color: blue; 
+   header {
+    background-color:  blue; 
     color: white;
     padding: 20px 0;
     text-align: center;
-  }
+  } 
   
   h1 {
     margin: 0;
@@ -41,8 +41,10 @@ body {
   }
   
   h2 {
-    color: #004080;
+    color:#004080 ;
   }
+
+  
   
   .sidebar {
     flex: 1;
@@ -75,4 +77,86 @@ body {
     color: #fff;
     padding: 20px;
     text-align:center;
-  }
+  } */
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-color: blue; 
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    min-height: calc(100vh - 100px);
+    background-color: #fff; /* Set a default background color */
+    background-size: cover; /* Ensure the background image covers the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+}
+
+.dashboard-content {
+    flex: 2;
+    min-width: 300px;
+    padding: 20px;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #004080;
+}
+
+.sidebar {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+}
+
+.sidebar div {
+    margin-bottom: 20px;
+}
+
+.button {
+    display: block;
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #003366;
+}
+
+footer {
+    background-color: #b0d6f0;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}

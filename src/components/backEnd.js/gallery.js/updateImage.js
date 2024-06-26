@@ -3,7 +3,7 @@ import axios from 'axios';
 import TokenLogin from '../tokenLogin'; 
 
 const UpdateImageById = () => {
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
   const [imageId, setImageId] = useState('');
   const [image, setImage] = useState({
     title: '',
@@ -17,6 +17,7 @@ const UpdateImageById = () => {
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
   
@@ -57,6 +58,12 @@ const UpdateImageById = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="image-container">
       <header>
@@ -64,6 +71,7 @@ const UpdateImageById = () => {
       </header>
 
       <section id="update-image">
+      
         <h2>Update Image by ID</h2>
         {!token && <TokenLogin onTokenReceived={handleTokenReceived} />}
 
@@ -111,11 +119,14 @@ const UpdateImageById = () => {
               <button type="submit" disabled={loading}>
                 {loading ? 'Updating...' : 'Update Image'}
               </button>
+              <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
             </form>
             {error && <p className="error-message">{error}</p>}
             {success && <p className="success-message">{success}</p>}
           </div>
+          
         )}
+        
       </section>
 
       <footer>

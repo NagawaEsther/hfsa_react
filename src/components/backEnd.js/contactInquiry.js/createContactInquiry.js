@@ -36,9 +36,14 @@ const ContactInquiryCreate = () => {
     }
   };
 
+  const handleLogout = () => {
+    window.location.href = '/admin';
+};
+
   return (
     <div className="contact-inquiry-container">
       <div className="sidebar">
+      <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
         <h2>Contact Form</h2>
         <form id="contact-form" onSubmit={handleFormSubmit}>
           <div>

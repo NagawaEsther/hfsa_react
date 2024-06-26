@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import workimage from '../workimage.jpg';
@@ -8,10 +9,14 @@ const UserForm = () => {
         name: '',
         email: '',
         password: '',
-        role: '',
         date_of_birth: '',
         contact_number: '',
         address: '',
+        sports: ''  
+    });
+    const [registrationStatus, setRegistrationStatus] = useState({
+        message: '',
+        error: ''
     });
 
     const handleChange = (e) => {
@@ -26,20 +31,25 @@ const UserForm = () => {
         try {
             const response = await axios.post('http://127.0.0.1:5000/api/v1/user/register', formData);
             console.log('Registration successful:', response.data);
-            alert('Registration successful!');
-           
+            setRegistrationStatus({
+                message: 'User registered successfully',
+                error: ''
+            });
             setFormData({
                 name: '',
                 email: '',
                 password: '',
-                role: '', 
                 date_of_birth: '',
                 contact_number: '',
                 address: '',
+                sports: ''  
             });
         } catch (error) {
             console.error('Registration failed:', error.response ? error.response.data : error.message);
-            alert('Registration failed: Please check your details and try again.');
+            setRegistrationStatus({
+                message: '',
+                error: 'Registration failed: Please check your details and try again.'
+            });
         }
     };
 
@@ -51,6 +61,8 @@ const UserForm = () => {
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
                     <h1 style={{ color: 'blue' }}>Registration Form</h1>
+                    {registrationStatus.message && <p className="success-message">{registrationStatus.message}</p>}
+                    {registrationStatus.error && <p className="error-message">{registrationStatus.error}</p>}
                     <div>
                         <label htmlFor="name">Full Name:</label>
                         <input
@@ -84,7 +96,6 @@ const UserForm = () => {
                             required
                         />
                     </div>
-                   
                     <div>
                         <label htmlFor="date_of_birth">Date of Birth:</label>
                         <input
@@ -116,6 +127,21 @@ const UserForm = () => {
                             onChange={handleChange}
                             required
                         />
+                    </div>
+                    <div>
+                        <label htmlFor="sports">Sports:</label>
+                        <select
+                            id="sports"
+                            name="sports"
+                            value={formData.sports}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select a sport</option>
+                            <option value="football">Football</option>
+                            <option value="netball">Netball</option>
+                            <option value="basketball">Basketball</option>
+                        </select>
                     </div>
 
                     <button type="submit">Register</button>

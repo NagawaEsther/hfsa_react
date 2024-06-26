@@ -7,10 +7,11 @@ const GetImageById = () => {
   const [imageData, setImageData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
 
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
   const fetchImageById = async () => {
@@ -45,6 +46,13 @@ const GetImageById = () => {
     }
   };
 
+  
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div>
       <header>
@@ -65,6 +73,7 @@ const GetImageById = () => {
                 {loading ? 'Fetching...' : 'Fetch Image'}
               </button>
             </form>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

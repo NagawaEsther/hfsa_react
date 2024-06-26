@@ -1,17 +1,46 @@
-import React, { createContext, useContext, useState } from 'react';
+
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true); 
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    
+    const fetchUserFromToken = async (token) => {
+       
+        return {
+            username: 'Admin',
+            is_admin: true,
+            access_token: token
+        };
+    };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            fetchUserFromToken(token).then(user => {
+                if (user) {
+                    setUser(user);
+                    setIsAuthenticated(true);
+                }
+                setLoading(false); 
+            }).catch(() => {
+                setLoading(false); 
+            });
+        } else {
+            setLoading(false); 
+        }
+    }, []);
 
     const login = async (user, isAdmin) => {
         setLoading(true);
         try {
-           
             setUser({ ...user, is_admin: isAdmin });
-            localStorage.setItem('token', user.access_token); 
+            localStorage.setItem('token', user.access_token);
+            setIsAuthenticated(true);
             setLoading(false);
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
@@ -22,12 +51,13 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('token'); 
+        localStorage.removeItem('token');
+        setIsAuthenticated(false);
     };
 
-    const isAuthenticated = () => {
-        return user !== null; 
-    };
+    if (loading) {
+        return <div>Loading...</div>; 
+    }
 
     return (
         <AuthContext.Provider value={{ user, login, logout, isAuthenticated, loading }}>
@@ -37,8 +67,7 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => {
-    const context = useContext(AuthContext);
-    return context;
+    return useContext(AuthContext);
 };
 
-export { AuthContext }; 
+export { AuthContext };

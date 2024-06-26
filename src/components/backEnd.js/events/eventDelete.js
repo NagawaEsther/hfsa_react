@@ -7,11 +7,11 @@ const EventDelete = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [token, setToken] = useState(null); 
-
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
  
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token); 
   };
 
   
@@ -44,12 +44,19 @@ const EventDelete = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="event-delete-container">
       
 
       <section id="delete-event">
         <h2>Delete Event by ID</h2>
+       
         
         {!token ? (
           <TokenLogin onTokenReceived={handleTokenReceived} />
@@ -66,6 +73,7 @@ const EventDelete = () => {
             <button onClick={handleDeleteClick} disabled={loading}>
               {loading ? 'Deleting...' : 'Delete Event'}
             </button>
+            <button onClick={handleLogout}>Logout</button> 
           </div>
         )}
         

@@ -7,10 +7,11 @@ const GetUserById = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
 
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
   const fetchUserById = async () => {
@@ -49,6 +50,12 @@ const GetUserById = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="user-details-container">
       <header>
@@ -68,6 +75,7 @@ const GetUserById = () => {
             <button onClick={handleFetchClick} disabled={loading}>
               {loading ? 'Fetching...' : 'Get User'}
             </button>
+            <button onClick={handleLogout}>Logout</button> 
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />
@@ -83,6 +91,7 @@ const GetUserById = () => {
           </div>
         )}
       </section>
+      
     </div>
   );
 };

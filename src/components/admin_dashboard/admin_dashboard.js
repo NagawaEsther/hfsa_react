@@ -1,10 +1,10 @@
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './admin_dashboard.css';
 import { useAuth } from './auth_context'; 
+
 
 const baseURL = 'http://127.0.0.1:5000/api/v1';
 
@@ -33,7 +33,8 @@ const apiUsers = axios.create({
 });
 
 const AdminDashboard = () => {
-  const { user, logout } = useAuth(); 
+  const { user, logout , isAuthenticated} = useAuth(); 
+  
 
   const [contactInquiries, setContactInquiries] = useState([]);
   const [programs, setPrograms] = useState([]);
@@ -42,9 +43,16 @@ const AdminDashboard = () => {
   const [donations, setDonations] = useState([]);
   const [users, setUsers] = useState([]);
 
+
   useEffect(() => {
+    if (!isAuthenticated) {
+      
+      window.location.href = '/login'; 
+      return;
+    }
+
     fetchAllData();
-  }, []);
+  }, [isAuthenticated]);
 
   const fetchAllData = async () => {
     try {
@@ -110,6 +118,7 @@ const AdminDashboard = () => {
     logout(); 
   };
 
+  
   return (
     <div>
       <h1>Welcome to Admin Dashboard, {user ? user.username : 'Admin'}</h1>
@@ -179,7 +188,7 @@ const AdminDashboard = () => {
           </tr>
         </tbody>
       </table>
-      {/* <Link to="/login">login authentication</Link><br /> */}
+      
     </div>
     
  

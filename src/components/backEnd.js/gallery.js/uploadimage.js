@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import TokenLogin from '../tokenLogin';
@@ -7,14 +8,12 @@ const UploadImage = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [uploadStatus, setUploadStatus] = useState('');
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
+
 
   const handleTokenReceived = (token) => {
     setToken(token);
-  };
-
-  const handleUrlChange = (event) => {
-    setImageUrl(event.target.value);
+    sessionStorage.setItem('token', token);
   };
 
   const handleTitleChange = (event) => {
@@ -23,6 +22,10 @@ const UploadImage = () => {
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
+  };
+
+  const handleUrlChange = (event) => {
+    setImageUrl(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -54,6 +57,12 @@ const UploadImage = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="upload-container">
       <header>
@@ -62,13 +71,6 @@ const UploadImage = () => {
       <section className="upload-form">
         {token ? (
           <form onSubmit={handleSubmit}>
-            <label htmlFor="imageUrl">Image URL:</label>
-            <input
-              type="text"
-              id="imageUrl"
-              value={imageUrl}
-              onChange={handleUrlChange}
-            />
             <label htmlFor="title">Title:</label>
             <input
               type="text"
@@ -82,7 +84,15 @@ const UploadImage = () => {
               value={description}
               onChange={handleDescriptionChange}
             ></textarea>
+            <label htmlFor="imageUrl">Image URL:</label>
+            <input
+              type="text"
+              id="imageUrl"
+              value={imageUrl}
+              onChange={handleUrlChange}
+            />
             <button type="submit">Upload</button>
+            <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
           </form>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

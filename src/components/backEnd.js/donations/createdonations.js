@@ -35,6 +35,13 @@ const DonationCreate = () => {
     }
   };
 
+
+  
+  const handleLogout = () => {
+    window.location.href = '/admin';
+};
+
+
   return (
     <div>
       <header>
@@ -43,6 +50,7 @@ const DonationCreate = () => {
 
       
         <div className="sidebar">
+        <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
           <h2>Donor Details</h2>
           <form onSubmit={handleDonationSubmit}>
             <div className="form-group">

@@ -7,13 +7,13 @@ body {
     background-color: #f4f4f4;
   }
   
-  header {
+  /* header {
     background-color: blue;
     color: #fff;
     padding: 10px 0;
     text-align: center;
   }
-  
+   */
   header h1 {
     margin: 0;
     font-size: 2.5em;

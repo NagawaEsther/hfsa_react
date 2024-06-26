@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TokenLogin from '../tokenLogin';
@@ -15,14 +16,13 @@ const UpdateUser = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
 
- 
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
-  
   const fetchUserById = async () => {
     if (!userId) {
       setError('Please enter a user ID.');
@@ -54,12 +54,10 @@ const UpdateUser = () => {
     }
   };
 
-  
   const handleInputChange = (e) => {
     setUserId(e.target.value);
   };
 
-  
   const handleUserDataChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -82,6 +80,12 @@ const UpdateUser = () => {
       setError('Error updating user. Please check the details and try again.');
       setLoading(false);
     }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; // Redirect to admin page after logout
   };
 
   useEffect(() => {
@@ -109,6 +113,7 @@ const UpdateUser = () => {
             <button onClick={fetchUserById} disabled={loading}>
               {loading ? 'Fetching...' : 'Get User'}
             </button>
+            <button onClick={handleLogout}>Logout</button> {/* Logout button */}
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />
@@ -182,3 +187,4 @@ const UpdateUser = () => {
 };
 
 export default UpdateUser;
+

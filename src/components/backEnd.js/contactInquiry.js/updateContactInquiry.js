@@ -7,10 +7,12 @@ const ContactInquiryUpdate = () => {
   const [inquiry, setInquiry] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
+ 
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token); 
   };
 
   
@@ -71,6 +73,13 @@ const ContactInquiryUpdate = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
   };
 
   return (
@@ -134,6 +143,7 @@ const ContactInquiryUpdate = () => {
                 </div>
               )
             )}
+            <button onClick={handleLogout}>Logout</button>
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

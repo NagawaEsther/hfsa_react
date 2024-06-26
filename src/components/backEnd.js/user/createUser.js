@@ -42,11 +42,18 @@ const UserRegister = () => {
         }
     };
 
+
+    const handleLogout = () => {
+        window.location.href = '/admin';
+    };
+
+
     return (
         <div className="registration-container">
            
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
+                <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
                     <h1 style={{ color: 'blue' }}>Registration Form</h1>
                     <div>
                         <label htmlFor="name">Full Name:</label>
@@ -116,8 +123,7 @@ const UserRegister = () => {
                     </div>
 
                     <button type="submit">Register</button>
-
-                    
+                   
                 </form>
             </div>
         </div>

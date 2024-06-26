@@ -7,11 +7,13 @@ const ProgramUpdate = () => {
   const [program, setProgram] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
+
 
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
  
@@ -74,6 +76,13 @@ const ProgramUpdate = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
+
   return (
     <div>
       <header>
@@ -93,6 +102,7 @@ const ProgramUpdate = () => {
             <button onClick={handleFetchClick} disabled={loading}>
               {loading ? 'Fetching...' : 'Fetch Program'}
             </button>
+            <button onClick={handleLogout}>Logout</button> 
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

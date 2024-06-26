@@ -3,10 +3,12 @@ import axios from 'axios';
 
 const EventAll = () => {
   const [events, setEvents] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/v1/event/events'); 
+        sessionStorage.setItem('token', token);
         setEvents(response.data.events); 
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -16,6 +18,12 @@ const EventAll = () => {
 
     fetchEvents(); 
   }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
 
   return (
     <div>
@@ -59,6 +67,7 @@ const EventAll = () => {
           </div>
         </div>
       </section>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

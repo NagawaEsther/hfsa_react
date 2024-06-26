@@ -7,10 +7,11 @@ const ContactInquiryGetAll = () => {
     const [inquiries, setInquiries] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [token, setToken] = useState(null); 
+    const [token, setToken] = useState(sessionStorage.getItem('token'));
 
     const handleTokenReceived = (token) => {
         setToken(token);
+        sessionStorage.setItem('token', token); 
     };
 
     const fetchInquiries = async () => {
@@ -37,6 +38,13 @@ const ContactInquiryGetAll = () => {
             fetchInquiries(); 
         }
     }, [token]);
+
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('token');
+        setToken(null);
+        window.location.href = '/admin'; 
+      };
 
     return (
         <div>
@@ -69,6 +77,7 @@ const ContactInquiryGetAll = () => {
                                 </div>
                             ))
                         )}
+                        <button onClick={handleLogout}>Logout</button>
                     </div>
                 ) : (
                     <TokenLogin onTokenReceived={handleTokenReceived} />

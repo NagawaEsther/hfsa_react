@@ -60,9 +60,16 @@ const CreateEvent = () => {
     }
   };
 
+  
+  const handleLogout = () => {
+    window.location.href = '/admin';
+};
+
+
   return (
-    <div className="program-container">
+    <div className="event-container">
       <header>
+      
         <h1>Hope Field Sports Academy</h1>
       </header>
       <section id="create-event">
@@ -152,6 +159,7 @@ const CreateEvent = () => {
               </label>
             </div>
             <button type="submit">Submit</button>
+            <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
           </form>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

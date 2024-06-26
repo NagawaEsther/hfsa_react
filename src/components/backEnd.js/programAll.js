@@ -6,10 +6,12 @@ import axios from 'axios';
 
 const ProgramAll= () => {
   const [programs, setPrograms] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/v1/program/programs'); 
+        sessionStorage.setItem('token', token);
         setPrograms(response.data.programs); 
       } catch (error) {
         console.error('Error fetching programs:', error);
@@ -19,6 +21,13 @@ const ProgramAll= () => {
 
     fetchPrograms(); 
   }, []);
+
+  
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
 
   return (
     <div>
@@ -58,6 +67,7 @@ const ProgramAll= () => {
             )}
           </div>
         </div>
+        <button onClick={handleLogout}>Logout</button>
       </section>
       
       

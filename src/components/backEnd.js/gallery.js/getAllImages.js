@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const GetALLImages = () => {
   const [galleryItems, setGalleryItems] = useState([]);
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
 
   useEffect(() => {
     fetchGetAllImages();
@@ -12,6 +13,7 @@ const GetALLImages = () => {
   const fetchGetAllImages = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:5000/api/v1/gallery/images');
+      sessionStorage.setItem('token', token);
       console.log('Response from API:', response.data); 
       setGalleryItems(response.data.images); 
     } catch (error) {
@@ -20,6 +22,12 @@ const GetALLImages = () => {
   };
 
   console.log('Gallery Items:', galleryItems); 
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
 
   return (
     <div>
@@ -41,7 +49,7 @@ const GetALLImages = () => {
           ))}
         </div>
       </div>
-      
+        <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

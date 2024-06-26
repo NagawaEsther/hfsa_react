@@ -7,11 +7,13 @@ const DeleteDonorById = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
+
 
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
  
@@ -44,12 +46,19 @@ const DeleteDonorById = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="donor-delete-container">
       
 
       <section id="delete-donor">
         <h2>Delete Donor by ID</h2>
+        
         
         {!token ? (
           <TokenLogin onTokenReceived={handleTokenReceived} />
@@ -66,6 +75,7 @@ const DeleteDonorById = () => {
             <button onClick={handleDeleteClick} disabled={loading}>
               {loading ? 'Deleting...' : 'Delete Donor'}
             </button>
+            <button onClick={handleLogout}>Logout</button> 
           </div>
         )}
         

@@ -7,10 +7,12 @@ const EventGet = () => {
   const [event, setEvent] = useState(null); 
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null); 
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
+
 
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token); 
   };
 
   const handleInputChange = (e) => {
@@ -46,6 +48,13 @@ const EventGet = () => {
       fetchEvent(); 
     }
   }, [token]); 
+
+  
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
   return (
     <div>
       <header>
@@ -91,6 +100,7 @@ const EventGet = () => {
                 </div>
               </div>
             )}
+            <button onClick={handleLogout}>Logout</button>
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

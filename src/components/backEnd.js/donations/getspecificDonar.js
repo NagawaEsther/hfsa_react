@@ -6,13 +6,15 @@ const GetDonorById = () => {
   const [donorData, setDonorData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
+
   const handleInputChange = (e) => {
     setDonorId(e.target.value);
   };
 
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
   const fetchDonorById = async () => {
@@ -44,6 +46,13 @@ const GetDonorById = () => {
       fetchDonorById(); 
     }
   }, [token]); 
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
   return (
     <div className="donor-details-container">
       
@@ -72,6 +81,7 @@ const GetDonorById = () => {
                 {donorData.message && <p>Message: {donorData.message}</p>}
               </div>
             )}
+            <button onClick={handleLogout}>Logout</button>
           </div>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />

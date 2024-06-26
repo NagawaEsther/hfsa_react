@@ -11,13 +11,16 @@ const ProgramForm = () => {
     duration: '',
     fees: ''
   });
-  const [token, setToken] = useState(null); 
   const [error, setError] = useState(null); 
   const [success, setSuccess] = useState(false); 
+  const [token, setToken] = useState(sessionStorage.getItem('token')); 
+
+
 
   
   const handleTokenReceived = (token) => {
     setToken(token); 
+    sessionStorage.setItem('token', token);
   };
 
   const handleChange = (e) => {
@@ -56,9 +59,17 @@ const ProgramForm = () => {
     }
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/admin'; 
+  };
+
+
   return (
     <div className="program-container">
       <header>
+      
         <h1>Hope Field Sports Academy</h1>
       </header>
       <section id="program-form">
@@ -132,6 +143,7 @@ const ProgramForm = () => {
               />
             </div>
             <button type="submit">Submit</button>
+            <button onClick={handleLogout} style={{ color: 'white',backgroundColor:'green' }}>Logout</button> 
           </form>
         ) : (
           <TokenLogin onTokenReceived={handleTokenReceived} />
