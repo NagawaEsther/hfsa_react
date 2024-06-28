@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import logo from './WhatsApp_Image_2024-06-11_at_11.12.34_9ad8ac49-removebg-preview.png';
 import './App.css';
+// Import Font Awesome CSS
+import '@fortawesome/fontawesome-free/css/all.css';
 import ProgramList from './components/program';
 import EventList from './components/events';
 import DonationList from './components/donations';

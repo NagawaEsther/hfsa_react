@@ -1,28 +1,5 @@
-/* program.css */
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  
-  /* header {
-    background-color: blue;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    font-size: larger;
-    font-weight: bold;
-    max-height: 55px;
-  }
-   */
-  header h1 {
-    margin: 0;
-    font-size: 2.5em;
-  }
-  
+
   #program-list {
     max-width: 1200px;
     margin: 40px auto;
@@ -72,18 +49,14 @@ body {
   }
   
   footer {
-    background-color: #b0d6f0;
-    color: #fff;
+    background-color: black;
     padding: 20px;
     text-align:center;
-  }
+  } 
   
-  footer p {
-    margin: 0;
-    font-size: 1em;
-  }
   
-  /* Responsive Design */
+  
+ 
   @media (max-width: 600px) {
     #program-list {
       padding: 0 10px;
@@ -93,4 +66,4 @@ body {
       grid-template-columns: 1fr;
     }
   }
-  
+   

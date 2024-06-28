@@ -1,4 +1,4 @@
-/* events styles.css */
+
 
 body {
     font-family: Arial, sans-serif;
@@ -7,14 +7,7 @@ body {
     background-color: #f4f4f4;
   }
   
-  /* header {
-    background-color: blue;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    font-size: larger;
-    font-weight: bold;
-  } */
+
   
   #events-news {
     padding: 20px;
@@ -54,9 +47,4 @@ body {
     margin-bottom: 5px;
   }
   
-  footer {
-    background-color: #b0d6f0;
-    color: #fff;
-    padding: 20px;
-    text-align:center;
-  }
+  

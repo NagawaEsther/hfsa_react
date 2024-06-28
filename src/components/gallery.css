@@ -1,4 +1,4 @@
-/* gallery.css */
+
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -28,10 +28,3 @@
   }
   
   
-  
-  footer {
-    background-color: #b0d6f0;
-    color: #fff;
-    padding: 20px;
-    text-align:center;
-  }

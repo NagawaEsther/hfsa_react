@@ -1,19 +1,5 @@
-/* Styles for Donation Page */
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
   
-  /* header {
-    background-color: blue;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-  }
-   */
   header h1 {
     margin: 0;
     font-size: 2.5em;
@@ -93,19 +79,9 @@ body {
     background-color: #0056b3;
   }
   
-  footer {
-    background-color: #b0d6f0;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  footer p {
-    margin: 0;
-    color: #777;
-  }
-  
-  /* Responsive Design */
+
+ 
+ 
   @media (max-width: 600px) {
     .donation-container {
       flex-direction: column;

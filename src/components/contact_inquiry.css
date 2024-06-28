@@ -1,20 +1,5 @@
-/* contact_inquiry.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  /* header {
-    background-color: blue;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-  } */
-  
-  
-  
+
+
   .contact-container {
     display: flex;
     flex-direction: row;
@@ -86,9 +71,4 @@ body {
     background-color: #0056b3;
   }
   
-  footer {
-    background-color: #b0d6f0;
-    color: #fff;
-    padding: 20px;
-    text-align:center;
-  }
+  

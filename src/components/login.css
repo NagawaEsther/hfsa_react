@@ -1,4 +1,4 @@
-/* login styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,14 +8,15 @@ body {
   
   .login-container {
     display: flex;
+    
   }
   
-  .image-container {
+  .my-container {
     flex: 1;
     padding: 10px; 
   }
   
-  .image-container img {
+  .my-container img {
     width: 100%; 
   }
   
@@ -41,10 +42,11 @@ body {
   
   form input[type="email"],
   form input[type="password"] {
-    width: 100%;
-    padding: 8px;
+    /* width: 100%; */
+    padding: 12px;
     border: 1px solid #ced4da;
     border-radius: 4px;
+    
   }
   
   button[type="submit"] {
@@ -59,4 +61,7 @@ body {
   
   button[type="submit"]:hover {
     background-color: #0056b3;
-  }
+  } 
+
+
+  

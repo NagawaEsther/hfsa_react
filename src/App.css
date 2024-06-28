@@ -4,8 +4,8 @@
 
 
 .App-header {
-  background-color: #b0d6f0;
-  /* #929090 */
+  background-color:  #8eccfc;
+  /* #102f49 */
   max-height: 135px;
   padding: 10px 20px;
   display: flex;
@@ -30,8 +30,7 @@ nav {
 }
 
 .App-link {
-  color: black;
-  /* white */
+  color:black;
   text-decoration: none;
   margin: 0 20px; 
   font-size: 20px; 
